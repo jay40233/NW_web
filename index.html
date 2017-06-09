@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+
+<html lang="en-US">
+<head>
+	<title> NW algorithm </title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=big5"/>
+	<script>
+	function checkData() {
+			var str1 = document.getElementById('asequence').value;
+			var str2 = document.getElementById('bsequence').value;
+			var select1 = document.getElementById('aupfile').files[0];
+			var select2 = document.getElementById('bupfile').files[0];
+			console.log(str1);
+			console.log(str2);
+			console.log(select1);
+			console.log(select2);
+			if((str1 || select1) &&  (str2 || select2)){
+				return true
+			}
+			else{
+				alert('Plase check if you have pasted/uploaded two sequences/PDBs.');
+				return false
+			}
+			
+		}
+	</script>
+	<style>
+	textarea
+    {
+      background-color:#C9FFFF;
+      height:200px;
+	  width:750px;
+      vertical-align: middle;
+    }
+	</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  <p><h1>Pairwise Sequence Alignment (Protein)</h1></p>
+  <p id="explain1"><h3>This is a demo and also a practice with Node.js</h3></p>
+  <p id="explain2"><h3>Needleman-Wunch algorithm is applied on this task, along with Blossom62 as the scoring matrix(more scoring matrix will be added in the future).</h3></p>
+</div>
+
+<div class="main">
+	<form action="/callNW" method="post" encType="multipart/form-data">
+	<div class="seq1">
+		<legend><font color="red" size="6">STEP 1 - Paste/Upload the first protein sequence</font></legend>
+		<p><br>Past your first sequence here:</br></p>
+		<textarea  id="asequence" name="asequence"  type="text" placeholder="Enter Seq 1 here"></textarea>
+		<p>
+		Or, upload a .PDB file:
+		<input id="aupfile" name="aupfile" type="file" />
+		</p>
+	</div>
+	<div class="seq2">
+		<legend><font color="red" size="6">STEP 2 - Paste/Upload the second protein sequence</font></legend>
+		<p><br>Past your second sequence here:</br></p>
+		<textarea  id="bsequence" name="bsequence" type="text" placeholder="Enter Seq 2 here"></textarea>
+		<p>
+		Or, upload a .PDB file:
+		<input id="bupfile" name="bupfile" type="file" />
+		</p>
+		
+		
+	</div>
+	<div class="Calculate">
+		<legend><font color="red" size="6">STEP 3 - Start aligning!</font></legend>
+		<input type='submit' name='submit' value='SUBMIT' id='submit' onclick='return checkData();' />
+	</div>
+	</form>
+</div>
+
+
+</body>
+</html>
